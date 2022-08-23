@@ -1,0 +1,22 @@
+<?php
+
+$viewModel = $block->getData('view_model');
+$collection = $viewModel->getRandomProducts();
+
+?>
+
+<div>
+    <ul>
+        <?php foreach ($collection as $item): ?>
+
+
+
+            <li><a href="<?= $item->getProductUrl() ?>">
+                         <?= $item->getName() ?>
+                    <img src="<?= $this->helper('Magento\Cms\Helper\Wysiwyg\Images')->getBaseUrl().'catalog/product'.$item->getImage('thumbnail') ?>" alt="prod">
+                    <?= '$' . intval($item->getPrice()) ?>
+                </a></li>
+
+        <?php endforeach; ?>
+    </ul>
+</div>
