@@ -9,13 +9,15 @@ $collection = $viewModel->getRandomProducts();
     <ul>
         <?php foreach ($collection as $item): ?>
 
-
-
-            <li><a href="<?= $item->getProductUrl() ?>">
-                         <?= $item->getName() ?>
+            <li class="randomProductItem">
+                <a class="randomProductImage" href="<?= $item->getProductUrl() ?>">
                     <img src="<?= $this->helper('Magento\Cms\Helper\Wysiwyg\Images')->getBaseUrl().'catalog/product'.$item->getImage('thumbnail') ?>" alt="prod">
-                    <?= '$' . intval($item->getPrice()) ?>
-                </a></li>
+                </a>
+                <div class="randomProductInfo">
+                    <a href="<?= $item->getProductUrl() ?>"><span class="randomProductName"><?= $item->getName() ?></span></a>
+                    <span class="randomProductPrice"><?= '$' . intval($item->getPrice()) ?></span>
+                </div>
+            </li>
 
         <?php endforeach; ?>
     </ul>
