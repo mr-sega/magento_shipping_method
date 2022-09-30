@@ -4,7 +4,8 @@
     <body>
         <referenceContainer name="content">
             <block class="Meetanshi\Extension\Block\Showdata" name="showdata"
-                   template="Meetanshi_Extension::showdata.phtml" cacheable="false"/>
+                   template="Meetanshi_Extension::showdata.phtml" cacheable="false"
+                   ifconfig="meetanshi/general/enable"/>
         </referenceContainer>
     </body>
 </page>
