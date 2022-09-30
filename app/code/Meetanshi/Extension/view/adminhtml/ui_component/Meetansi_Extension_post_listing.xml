@@ -47,19 +47,6 @@
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
                 </item>
             </argument>
-            <action name="delete">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="type" xsi:type="string">delete</item>
-                        <item name="label" xsi:type="string" translate="true">Delete</item>
-                        <item name="url" xsi:type="url" path="mageplaza_blog/post/massDelete"/>
-                        <item name="confirm" xsi:type="array">
-                            <item name="title" xsi:type="string" translate="true">Delete Posts</item>
-                            <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete selected Posts?</item>
-                        </item>
-                    </item>
-                </argument>
-            </action>
         </massaction>
         <paging name="listing_paging"/>
     </listingToolbar>
@@ -172,17 +159,13 @@
                 </item>
             </argument>
         </column>
-        <actionsColumn name="actions" class="Meetanshi\Extension\Ui\Component\Listing\Column\Actions">
+        <actionsColumn name="delete_action" class="Meetanshi\Extension\Ui\Component\Listing\Column\DeleteAction">
             <argument name="data" xsi:type="array">
-                <item name="action_list" xsi:type="array">
-                    <item name="edit" xsi:type="array">
-                        <item name="label" xsi:type="string" translate="true">Delete</item>
-                        <item name="path" xsi:type="string">Meetanshi\Extension\Controller\Index\Delete</item>
-                        <item name="params" xsi:type="array">
-                            <item name="id" xsi:type="string">id</item>
+                    <item name="config" xsi:type="array">
+                        <item name="indexField" xsi:type="string">id</item>
+                        <item name="viewUrlPath" xsi:type="string">extension/post/delete</item>
+                        <item name="urlEntityParamName" xsi:type="string">id</item>
                         </item>
-                    </item>
-                </item>
             </argument>
         </actionsColumn>
     </columns>

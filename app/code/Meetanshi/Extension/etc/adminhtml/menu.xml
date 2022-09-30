@@ -12,10 +12,10 @@
              module="Meetanshi_Extension"
              sortOrder="10"
              action="extension/post"
-             resource="Meetanshi_Extension::extension"
+             resource="Meetanshi_Extension::post"
              parent="Meetanshi_Extension::extension"
         />
-        <add id="Meetanshi_Extension::hello_configuration"
+        <add id="Meetanshi_Extension::ext_configuration"
              title="Configuration"
              module="Meetanshi_Extension"
              sortOrder="99"
