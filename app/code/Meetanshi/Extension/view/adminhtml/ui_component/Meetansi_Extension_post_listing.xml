@@ -10,11 +10,11 @@
                 <item name="name" xsi:type="string">add</item>
                 <item name="label" xsi:type="string" translate="true">Add New Post</item>
                 <item name="class" xsi:type="string">primary</item>
-                <item name="url" xsi:type="string">*/*/new</item>
+                <item name="url" xsi:type="string">*/*/edit</item>
             </item>
         </item>
     </argument>
-    <dataSource name="nameOfDataSource">
+    <dataSource name="Meetansi_Extension_post_listing_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
             <argument name="name" xsi:type="string">Meetansi_Extension_post_listing_data_source</argument>
@@ -159,11 +159,11 @@
                 </item>
             </argument>
         </column>
-        <actionsColumn name="delete_action" class="Meetanshi\Extension\Ui\Component\Listing\Column\DeleteAction">
+        <actionsColumn name="actions" class="Meetanshi\Extension\Ui\Component\Listing\Column\Actions">
             <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">
+                        <item name="resizeEnabled" xsi:type="boolean">false</item>
                         <item name="indexField" xsi:type="string">id</item>
-                        <item name="viewUrlPath" xsi:type="string">extension/post/delete</item>
                         <item name="urlEntityParamName" xsi:type="string">id</item>
                         </item>
             </argument>
