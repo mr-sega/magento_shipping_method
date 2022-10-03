@@ -2,7 +2,9 @@
 
 namespace Meetanshi\Extension\Controller\Adminhtml\Post;
 
-class Index extends \Magento\Backend\App\Action
+use Magento\Framework\App\Action\HttpGetActionInterface;
+
+class Index extends \Magento\Backend\App\Action implements HttpGetActionInterface
 {
     protected $resultPageFactory = false;
 

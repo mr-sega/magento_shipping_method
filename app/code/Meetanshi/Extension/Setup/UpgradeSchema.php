@@ -17,7 +17,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
         if (version_compare($context->getVersion(), '1.2.0', '<')) {
             $installer->getConnection()->addColumn(
                 $installer->getTable('extension'),
-                'notebook',
+                'Notebook',
                 [
                     'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
                     'nullable' => true,
@@ -30,13 +30,13 @@ class UpgradeSchema implements UpgradeSchemaInterface
         if (version_compare($context->getVersion(), '1.2.0', '<')) {
             $installer->getConnection()->addColumn(
                 $installer->getTable('extension'),
-                'description',
+                'Description',
                 [
                     'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
                     'nullable' => true,
                     'size'     => 255,
                     'comment' => 'test',
-                    'after' => 'notebook'
+                    'after' => 'Notebook'
                 ]
             );
         }

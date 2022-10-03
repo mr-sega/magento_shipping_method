@@ -2,7 +2,7 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="Meetansi_Extension_post_listing_data_source" xsi:type="string">Meetanshi\Extension\Model\ResourceModel\Extension\Grid\Collection</item>
+                <item name="meetansi_extension_post_listing_data_source" xsi:type="string">Meetanshi\Extension\Model\ResourceModel\Extension\Grid\Collection</item>
             </argument>
         </arguments>
     </type>

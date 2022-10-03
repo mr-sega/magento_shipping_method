@@ -2,7 +2,7 @@
     <update handle="styles"/>
     <body>
         <referenceContainer name="content">
-            <uiComponent name="Meetansi_Extension_post_listing"/>
+            <uiComponent name="meetansi_extension_post_listing"/>
         </referenceContainer>
     </body>
 </page>

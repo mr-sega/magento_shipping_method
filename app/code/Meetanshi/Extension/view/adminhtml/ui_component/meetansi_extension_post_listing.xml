@@ -1,8 +1,8 @@
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">Meetansi_Extension_post_listing.Meetansi_Extension_post_listing_data_source</item>
-            <item name="deps" xsi:type="string">Meetansi_Extension_post_listing.Meetansi_Extension_post_listing_data_source</item>
+            <item name="provider" xsi:type="string">meetansi_extension_post_listing.meetansi_extension_post_listing_data_source</item>
+            <item name="deps" xsi:type="string">meetansi_extension_post_listing.meetansi_extension_post_listing_data_source</item>
         </item>
         <item name="spinner" xsi:type="string">spinner_columns</item>
         <item name="buttons" xsi:type="array">
@@ -10,14 +10,14 @@
                 <item name="name" xsi:type="string">add</item>
                 <item name="label" xsi:type="string" translate="true">Add New Post</item>
                 <item name="class" xsi:type="string">primary</item>
-                <item name="url" xsi:type="string">*/*/edit</item>
+                <item name="url" xsi:type="string">extension/post/newaction</item>
             </item>
         </item>
     </argument>
-    <dataSource name="Meetansi_Extension_post_listing_data_source">
+    <dataSource name="meetansi_extension_post_listing_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
-            <argument name="name" xsi:type="string">Meetansi_Extension_post_listing_data_source</argument>
+            <argument name="name" xsi:type="string">meetansi_extension_post_listing_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">id</argument>
             <argument name="requestFieldName" xsi:type="string">id</argument>
             <argument name="data" xsi:type="array">

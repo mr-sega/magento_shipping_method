@@ -11,8 +11,8 @@ if ($collection->count()) {
                 <th scope="col" class="col name"><?php echo __('Name') ?></th>
                 <th scope="col" class="col email"><?php echo __('Email') ?></th>
                 <th scope="col" class="col telephone"><?php echo __('Telephone') ?></th>
-                <th scope="col" class="col text"><?php echo __('notebook') ?></th>
-                <th scope="col" class="col text"><?php echo __('description') ?></th>
+                <th scope="col" class="col text"><?php echo __('Notebook') ?></th>
+                <th scope="col" class="col text"><?php echo __('Description') ?></th>
                 <th scope="col" class="col createat"><?php echo __('Created At') ?></th>
                 <th scope="col" class="col action"><?php echo __('Action') ?></th>
             </tr>
@@ -33,10 +33,10 @@ if ($collection->count()) {
                     <td data-th="<?= $block->escapeHtml(__('Telephone')) ?>" class="col telephone">
                         <?php echo $item->getTelephone() ?>
                     </td>
-                    <td data-th="<?= $block->escapeHtml(__('notebook')) ?>" class="col text">
+                    <td data-th="<?= $block->escapeHtml(__('Notebook')) ?>" class="col text">
                         <?php echo $item->getNotebook() ?>
                     </td>
-                    <td data-th="<?= $block->escapeHtml(__('description')) ?>" class="col text">
+                    <td data-th="<?= $block->escapeHtml(__('Description')) ?>" class="col text">
                         <?php echo $item->getDescription() ?>
                     </td>
                     <td data-th="<?= $block->escapeHtml(__('Created At')) ?>"
