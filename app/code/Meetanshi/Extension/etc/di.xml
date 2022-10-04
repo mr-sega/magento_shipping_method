@@ -1,4 +1,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <preference for="Meetanshi\Extension\Api\PostRepositoryInterface" type="Meetanshi\Extension\Model\PostRepository"/>
+    <preference for="Meetanshi\Extension\Api\Data\PostInterface" type="Meetanshi\Extension\Model\Extension"/>
+    <preference for="Meetanshi\Extension\Api\Data\PostSearchResultInterface" type="Meetanshi\Extension\Model\PostSearchResult"/>
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">

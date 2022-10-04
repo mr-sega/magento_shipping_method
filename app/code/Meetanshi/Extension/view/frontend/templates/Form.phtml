@@ -1,17 +1,11 @@
 <?php
 $data = $block->getAllData();
-$name = '';
-$email = '';
-$telephone = '';
-$notebook = '';
-$description = '';
-if ($data->getId()) {
-    $name = $data->getName();
-    $email = $data->getEmail();
-    $telephone = $data->getTelephone();
-    $notebook = $data->getNotebook();
-    $description = $data->getDescription();
-}
+$name = $block->getName();
+$email = $block->getEmail();
+$telephone = $block->getTelephone();
+$notebook = $block->getNotebook();
+$description = $block->getDescription();
+
 ?>
 <div class="row">
     <div class="col-md-8">
@@ -30,8 +24,7 @@ if ($data->getId()) {
                     } ?>
                     <div class="fields col-md-6">
                         <div class="field name required">
-                            <label class="label" for="title"><span><?= $block->
-                                    escapeHtmlAttr(__('Name')) ?></span></label>
+                            <label class="label" for="title"><span><?= $block->escapeHtmlAttr(__('Name')) ?></span></label>
                             <div class="control">
                                 <input name="name" id="name" title="Name" value="<?php echo $name ?>" class="input-text"
                                        type="text"
