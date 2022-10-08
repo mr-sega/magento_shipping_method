@@ -6,7 +6,7 @@ use Magento\Framework\View\Element\Template;
 use Magento\Backend\Block\Template\Context;
 use Meetanshi\Extension\Model\ResourceModel\Extension\CollectionFactory;
 
-class Showdata extends Template
+class ShowData extends Template
 {
 
     public $collection;

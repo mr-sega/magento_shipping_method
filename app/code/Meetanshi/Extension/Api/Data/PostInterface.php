@@ -36,17 +36,17 @@ interface PostInterface extends ExtensibleDataInterface
 
     public function setName($name);
 
-    public function setEmail();
+    public function setEmail($email);
 
-    public function setTelephone();
+    public function setTelephone($telephone);
 
-    public function setNotebook();
+    public function setNotebook($notebook);
 
-    public function setDescription();
+    public function setDescription($description);
 
-    public function setCreatedAt();
+    public function setCreatedAt($created_at);
 
-    public function setUpdateAt();
+    public function setUpdateAt($update_time);
 
 
 }

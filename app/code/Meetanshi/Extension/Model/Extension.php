@@ -9,7 +9,7 @@ use Magento\Framework\DataObject\IdentityInterface;
 class Extension extends AbstractModel implements PostInterface, IdentityInterface
 {
 
-    const CACHE_TAG = 'extension' ;
+    const CACHE_TAG = 'Meetanshi_Extension' ;
 
     protected function _construct()
     {
@@ -63,9 +63,9 @@ class Extension extends AbstractModel implements PostInterface, IdentityInterfac
         $this->setData(self::NAME, $name);
     }
 
-    public function setUpdateAt()
+    public function setUpdateAt($update_time)
     {
-        $this->setData(self::UPDATED);
+        $this->setData(self::UPDATED, $update_time);
     }
 
     public function getIdentities()
@@ -74,29 +74,29 @@ class Extension extends AbstractModel implements PostInterface, IdentityInterfac
     }
 
 
-    public function setEmail()
+    public function setEmail($email)
     {
-        $this->setData(self::EMAIL);
+        $this->setData(self::EMAIL, $email);
     }
 
-    public function setTelephone()
+    public function setTelephone($telephone)
     {
-        $this->setData(self::TELEPHONE);
+        $this->setData(self::TELEPHONE, $telephone);
     }
 
-    public function setNotebook()
+    public function setNotebook($notebook)
     {
-        $this->setData(self::NOTEBOOK);
+        $this->setData(self::NOTEBOOK, $notebook);
     }
 
-    public function setDescription()
+    public function setDescription($description)
     {
-        $this->setData(self::DESCRIPTION);
+        $this->setData(self::DESCRIPTION, $description);
     }
 
-    public function setCreatedAt()
+    public function setCreatedAt($created_at)
     {
-        $this->setData(self::UPDATED);
+        $this->setData(self::UPDATED, $created_at);
     }
 
     public function beforeSave(): PostInterface

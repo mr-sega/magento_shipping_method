@@ -2,18 +2,23 @@
 
 namespace Meetanshi\Extension\Model;
 
+
 use Magento\Framework\Api\SearchCriteriaInterface;
-use Magento\Framework\Exception\NoSuchEntityException;
+use Meetanshi\Extension\Api\Data\PostInterfaceFactory;
 use Meetanshi\Extension\Api\Data\PostInterface;
 use Meetanshi\Extension\Api\Data\PostSearchResultInterfaceFactory;
 use Meetanshi\Extension\Api\PostRepositoryInterface;
-use Meetanshi\Extension\Model\ResourceModel\Extension;
+use Meetanshi\Extension\Model\ResourceModel\Extension as ResourcePost;
 use Meetanshi\Extension\Model\ResourceModel\Extension\CollectionFactory as PostCollectionFactory;
 use Meetanshi\Extension\Model\ResourceModel\Extension\Collection;
+use Meetanshi\Extension\Api\Data\PostSearchResultsInterface;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Meetanshi\Extension\Model\postFactory;
+
 
 class PostRepository implements PostRepositoryInterface
 {
@@ -33,36 +38,22 @@ class PostRepository implements PostRepositoryInterface
      * @var PostFactory
      */
     private $postFactory;
-    /**
-     * @var PostInterfaceFactory
-     */
-    private $postInterfaceFactory;
-    /**
-     * @var PostSearchResultsInterfaceFactory
-     */
-    private $searchResultsFactory;
+
     /**
      * @param ResourcePost $resource
-     * @param PostFactory $postFactory
-     * @param PostInterfaceFactory $postInterfaceFactory
      * @param PostCollectionFactory $collectionFactory
-     * @param PostSearchResultsInterfaceFactory $searchResultsFactory
      * @param CollectionProcessorInterface $collectionProcessor
      */
     public function __construct(
         ResourcePost                      $resource,
-        PostFactory                       $postFactory,
-        PostInterfaceFactory              $postInterfaceFactory,
         PostCollectionFactory             $collectionFactory,
-        PostSearchResultsInterfaceFactory $searchResultsFactory,
-        CollectionProcessorInterface      $collectionProcessor
+        CollectionProcessorInterface      $collectionProcessor,
+        PostFactory                       $postFactory
     ) {
         $this->resource = $resource;
-        $this->postFactory = $postFactory;
         $this->collectionFactory = $collectionFactory;
-        $this->searchResultsFactory = $searchResultsFactory;
-        $this->postInterfaceFactory = $postInterfaceFactory;
         $this->collectionProcessor = $collectionProcessor;
+        $this->postFactory = $postFactory;
     }
     /**
      * @param int $id
@@ -137,4 +128,5 @@ class PostRepository implements PostRepositoryInterface
         }
         return $post;
     }
+
 }

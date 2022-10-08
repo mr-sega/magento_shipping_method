@@ -4,7 +4,7 @@
     <body>
         <referenceContainer name="content">
             <block class="Meetanshi\Extension\Block\Form" name="my.file"
-                   template="Meetanshi_Extension::Form.phtml"
+                   template="Meetanshi_Extension::form.phtml"
                    ifconfig="meetanshi/general/enable"/>
         </referenceContainer>
     </body>

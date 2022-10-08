@@ -18,13 +18,16 @@ interface PostRepositoryInterface
      * @param \Meetanshi\Extension\Api\Data\PostInterface $post
      * @return \Meetanshi\Extension\Api\Data\PostInterface
      */
-    public function save(PostInterface $post);
+    public function save(PostInterface $posd);
 
     /**
      * @param \Meetanshi\Extension\Api\Data\PostInterface $post
      * @return void
      */
     public function delete(PostInterface $post);
+
+
+    public function deleteById($id);
 
     /**
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
