@@ -4,13 +4,12 @@ namespace Meetanshi\Extension\Controller\Index;
 
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
-use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory as ResultPageFactory;
 
-class Index extends Action implements HttpGetActionInterface
+class Create extends Action
 {
     /**
      * @var ResultPageFactory
@@ -28,6 +27,7 @@ class Index extends Action implements HttpGetActionInterface
         $this->resultPageFactory = $resultPageFactory;
         parent::__construct($context);
     }
+
 
     public function execute()
     {

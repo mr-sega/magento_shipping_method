@@ -3,13 +3,13 @@ namespace Meetanshi\Extension\Model;
 
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
-use Meetanshi\Extension\Api\Data\PostInterface;
+use Meetanshi\Extension\Api\Data\ExtensionInterface;
 use Magento\Framework\DataObject\IdentityInterface;
 
-class Extension extends AbstractModel implements PostInterface, IdentityInterface
+class Extension extends AbstractModel implements ExtensionInterface, IdentityInterface
 {
 
-    const CACHE_TAG = 'Meetanshi_Extension' ;
+    const CACHE_TAG = 'Meetanshi_Extension';
 
     protected function _construct()
     {
@@ -99,7 +99,7 @@ class Extension extends AbstractModel implements PostInterface, IdentityInterfac
         $this->setData(self::UPDATED, $created_at);
     }
 
-    public function beforeSave(): PostInterface
+    public function beforeSave(): ExtensionInterface
     {
         if ($this->hasDataChanges()) {
             $this->setUpdatedAt(date("Y-m-d H:i:s"));

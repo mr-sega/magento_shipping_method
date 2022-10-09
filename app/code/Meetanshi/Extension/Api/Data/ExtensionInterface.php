@@ -4,7 +4,7 @@ namespace Meetanshi\Extension\Api\Data;
 
 use Magento\Framework\Api\ExtensibleDataInterface;
 
-interface PostInterface extends ExtensibleDataInterface
+interface ExtensionInterface extends ExtensibleDataInterface
 {
     const ID = 'id' ;
     const NAME = 'name' ;

@@ -7,32 +7,32 @@ use Magento\Framework\View\Result\PageFactory;
 use Meetanshi\Extension\Model\ExtensionFactory;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\App\Action\Action;
+use Meetanshi\Extension\Api\ExtensionRepositoryInterface;
 
 class Delete extends Action
 {
     protected $resultPageFactory;
     protected $extensionFactory;
+    protected $extensionRepository;
 
     public function __construct(
         Context $context,
         PageFactory $resultPageFactory,
-        ExtensionFactory $extensionFactory
+        ExtensionFactory $extensionFactory,
+        ExtensionRepositoryInterface $extensionRepository
     )
     {
         $this->resultPageFactory = $resultPageFactory;
         $this->extensionFactory = $extensionFactory;
+        $this->extensionRepository = $extensionRepository;
         parent::__construct($context);
     }
 
     public function execute()
     {
         try {
-            $data = (array)$this->getRequest()->getParams();
-            if ($data) {
-                $model = $this->extensionFactory->create()->load($data['id']);
-                $model->delete();
-                $this->messageManager->addSuccessMessage(__("Record Delete Successfully."));
-            }
+            $id = $this->_request->getParam('id');
+            $this->extensionRepository->deleteById($id);
         } catch (\Exception $e) {
             $this->messageManager->addErrorMessage($e, __("We can\'t delete record, Please try again."));
         }
