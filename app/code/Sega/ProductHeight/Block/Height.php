@@ -46,6 +46,10 @@ class Height extends Template
         return $this->product;
     }
 
+    public function getProductEnableHeight()
+    {
+        return $this->getProduct()->getData('product_height_enable');
+    }
 
     public function getProductHeight()
     {
