@@ -83,17 +83,26 @@ class AddProductHeightAttribute implements DataPatchInterface
             $attributeCode,
             [
                 'type' => 'int',
+                'group' => 'Product Details',
                 'frontend' => '',
                 'label' => $attributeLabel,
                 'input' => 'boolean',
                 'global' => ScopedAttributeInterface::SCOPE_GLOBAL,
                 'visible' => true,
+                'searchable' => true,
+                'filterable' => true,
+                'comparable' => true,
                 'required' => false,
                 'user_defined' => true,
                 'default' => '',
                 'visible_on_front' => false,
+                'visible_in_advanced_search' => true,
+                'used_in_product_listing' => true,
+                'apply_to' => '',
                 'unique' => false,
                 'is_used_in_grid' => true,
+                'is_visible_in_grid' => false,
+                'is_filterable_in_grid' => true,
                 'sort_order' => 50
             ]
         );
