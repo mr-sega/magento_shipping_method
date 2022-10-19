@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Meetanshi_Extension::extension"
+             title="admin panel"
+             module="Meetanshi_Extension"
+             sortOrder="51"
+             resource="Meetanshi_Extension::extension"
+        />
+        <add id="Meetanshi_Extension::post"
+             title="Manage Posts"
+             module="Meetanshi_Extension"
+             sortOrder="10"
+             action="extension/post"
+             resource="Meetanshi_Extension::post"
+             parent="Meetanshi_Extension::extension"
+        />
+        <add id="Meetanshi_Extension::ext_configuration"
+             title="Configuration"
+             module="Meetanshi_Extension"
+             sortOrder="99"
+             parent="Meetanshi_Extension::extension"
+             action="adminhtml/system_config/edit/section/extension"
+             resource="Meetanshi_Extension::extension_configuration"
+        />
+    </menu>
+</config>
