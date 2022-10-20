@@ -33,9 +33,8 @@ class Edit extends Template
     public function getPost()
     {
         $id = $this->catalogSession->get('editRecordId');
-        $post = $this->extensionFactory->create();
-        $result = $post->load($id);
-        return $result;
+        $post = $this->extensionRepository->getById($this->request->getParam('id'));
+        return $post;
 
     }
 
