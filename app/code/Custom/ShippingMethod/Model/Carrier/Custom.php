@@ -2,10 +2,7 @@
 
 namespace Custom\ShippingMethod\Model\Carrier;
 
-use
-
-    Magento\Quote\Model\Quote\Address\RateRequest;
-use Magento\Shipping\Model\Rate\Result;
+use Magento\Quote\Model\Quote\Address\RateRequest;
 use Magento\Shipping\Model\Carrier\AbstractCarrier;
 use Magento\Shipping\Model\Carrier\CarrierInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -13,6 +10,7 @@ use Magento\Quote\Model\Quote\Address\RateResult\ErrorFactory;
 use Psr\Log\LoggerInterface;
 use Magento\Shipping\Model\Rate\ResultFactory;
 use Magento\Quote\Model\Quote\Address\RateResult\MethodFactory;
+
 
 class Custom extends AbstractCarrier implements CarrierInterface
 {
@@ -22,6 +20,7 @@ class Custom extends AbstractCarrier implements CarrierInterface
     protected $rateResultFactory;
 
     protected $rateMethodFactory;
+
 
     public function __construct(
         ScopeConfigInterface $scopeConfig,
@@ -53,7 +52,6 @@ class Custom extends AbstractCarrier implements CarrierInterface
 
         /** @var \Magento\Quote\Model\Quote\Address\RateResult\Method $method */
         $method = $this->rateMethodFactory->create();
-
         $method->setCarrier('custom');
         $method->setCarrierTitle($this->getConfigData('title'));
 
@@ -63,6 +61,15 @@ class Custom extends AbstractCarrier implements CarrierInterface
 
         $amount = $this->getConfigData('price');
         $shippingPrice = $this->getFinalPriceWithHandlingFee($amount);
+
+        if ($request->getDestCountryId() == 'US'){
+            $shippingPrice = $amount * 3;
+        }elseif ($request->getDestCountryId() == 'UA'){
+            $shippingPrice = $amount * 2;
+        }elseif ($request->getDestCountryId() == 'CA'){
+            $shippingPrice = $amount * 7;
+        }
+
         $method->setPrice($shippingPrice);
         $method->setCost($amount);
 
