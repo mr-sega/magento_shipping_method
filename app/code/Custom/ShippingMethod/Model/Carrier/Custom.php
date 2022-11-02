@@ -10,6 +10,7 @@ use Magento\Quote\Model\Quote\Address\RateResult\ErrorFactory;
 use Psr\Log\LoggerInterface;
 use Magento\Shipping\Model\Rate\ResultFactory;
 use Magento\Quote\Model\Quote\Address\RateResult\MethodFactory;
+use Magento\Framework\ObjectManagerInterface;
 
 
 class Custom extends AbstractCarrier implements CarrierInterface
@@ -21,8 +22,10 @@ class Custom extends AbstractCarrier implements CarrierInterface
 
     protected $rateMethodFactory;
 
+    protected $_objectManager;
 
     public function __construct(
+        ObjectManagerInterface $objectManager,
         ScopeConfigInterface $scopeConfig,
         ErrorFactory $rateErrorFactory,
         LoggerInterface $logger,
@@ -31,6 +34,7 @@ class Custom extends AbstractCarrier implements CarrierInterface
         array $data = []
     )
     {
+        $this->_objectManager = $objectManager;
         $this->rateResultFactory = $rateResultFactory;
         $this->rateMethodFactory = $rateMethodFactory;
         parent::__construct($scopeConfig, $rateErrorFactory, $logger, $data);
@@ -59,16 +63,28 @@ class Custom extends AbstractCarrier implements CarrierInterface
         $method->setMethodTitle($this->getConfigData('name'));
 
 
-        $amount = $this->getConfigData('price');
-        $shippingPrice = $this->getFinalPriceWithHandlingFee($amount);
+        $cart = $this->_objectManager->get('\Magento\Checkout\Model\Cart');
 
+        $uniqueItems = $cart->getQuote()->getItemsCount();
+        $totalItems = $cart->getQuote()->getItemsQty();
+        $subTotal = $cart->getQuote()->getGrandTotal();
+
+        $amount = $this->getConfigData('price');
+
+        $countryRate = null;
         if ($request->getDestCountryId() == 'US'){
-            $shippingPrice = $amount * 3;
+            $countryRate = 3;
         }elseif ($request->getDestCountryId() == 'UA'){
-            $shippingPrice = $amount * 2;
+            $countryRate = 2;
         }elseif ($request->getDestCountryId() == 'CA'){
-            $shippingPrice = $amount * 7;
+            $countryRate = 7;
+        }else {
+            $countryRate = 1;
         }
+
+
+            $shippingPrice = ($subTotal * $uniqueItems * $amount) / $totalItems * $countryRate;
+
 
         $method->setPrice($shippingPrice);
         $method->setCost($amount);
