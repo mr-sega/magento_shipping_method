@@ -3,17 +3,17 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
         <carriers>
-            <custom>
+            <planetexpress>
                 <active>1</active>
                 <sallowspecific>0</sallowspecific>
-                <model>Custom\ShippingMethod\Model\Carrier\Custom</model>
-                <name>Custom Shipping</name>
+                <model>Custom\ShippingMethod\Model\Carrier\PlanetExpress</model>
+                <name>Planet Express</name>
                 <handling_type>F</handling_type>
                 <price>15.00</price>
-                <title>Custom Method</title>
+                <title>Super speed</title>
                 <type>I</type>
                 <specificerrmsg>This shipping method is not available right now.</specificerrmsg>
-            </custom>
+            </planetexpress>
         </carriers>
     </default>
 </config>

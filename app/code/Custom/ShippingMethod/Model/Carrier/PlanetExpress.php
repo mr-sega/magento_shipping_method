@@ -10,22 +10,21 @@ use Magento\Quote\Model\Quote\Address\RateResult\ErrorFactory;
 use Psr\Log\LoggerInterface;
 use Magento\Shipping\Model\Rate\ResultFactory;
 use Magento\Quote\Model\Quote\Address\RateResult\MethodFactory;
-use Magento\Framework\ObjectManagerInterface;
 
 
-class Custom extends AbstractCarrier implements CarrierInterface
+class PlanetExpress extends AbstractCarrier implements CarrierInterface
 {
 
-    protected $_code = 'custom';
+    protected $_code = 'planetexpress';
 
     protected $rateResultFactory;
 
     protected $rateMethodFactory;
 
-    protected $_objectManager;
+    protected $checkoutHelper;
 
     public function __construct(
-        ObjectManagerInterface $objectManager,
+        \Magento\Checkout\Helper\Data $checkoutHelper,
         ScopeConfigInterface $scopeConfig,
         ErrorFactory $rateErrorFactory,
         LoggerInterface $logger,
@@ -34,7 +33,7 @@ class Custom extends AbstractCarrier implements CarrierInterface
         array $data = []
     )
     {
-        $this->_objectManager = $objectManager;
+        $this->checkoutHelper = $checkoutHelper;
         $this->rateResultFactory = $rateResultFactory;
         $this->rateMethodFactory = $rateMethodFactory;
         parent::__construct($scopeConfig, $rateErrorFactory, $logger, $data);
@@ -42,7 +41,7 @@ class Custom extends AbstractCarrier implements CarrierInterface
 
     public function getAllowedMethods()
     {
-        return ['custom' => $this->getConfigData('name')];
+        return ['planetexpress' => $this->getConfigData('name')];
     }
 
     public function collectRates(RateRequest $request)
@@ -56,35 +55,31 @@ class Custom extends AbstractCarrier implements CarrierInterface
 
         /** @var \Magento\Quote\Model\Quote\Address\RateResult\Method $method */
         $method = $this->rateMethodFactory->create();
-        $method->setCarrier('custom');
+        $method->setCarrier($this->_code);
         $method->setCarrierTitle($this->getConfigData('title'));
 
-        $method->setMethod('custom');
+        $method->setMethod($this->_code);
         $method->setMethodTitle($this->getConfigData('name'));
 
 
-        $cart = $this->_objectManager->get('\Magento\Checkout\Model\Cart');
+        $checkoutHelper = $this->checkoutHelper->getQuote();
 
-        $uniqueItems = $cart->getQuote()->getItemsCount();
-        $totalItems = $cart->getQuote()->getItemsQty();
-        $subTotal = $cart->getQuote()->getGrandTotal();
+        $uniqueItems = $checkoutHelper->getItemsCount();
+        $totalItems = $checkoutHelper->getItemsQty();
+        $subTotal = $checkoutHelper->getSubtotal();
 
         $amount = $this->getConfigData('price');
 
-        $countryRate = null;
+        $countryRate = 1;
         if ($request->getDestCountryId() == 'US'){
             $countryRate = 3;
         }elseif ($request->getDestCountryId() == 'UA'){
             $countryRate = 2;
         }elseif ($request->getDestCountryId() == 'CA'){
             $countryRate = 7;
-        }else {
-            $countryRate = 1;
         }
 
-
             $shippingPrice = ($subTotal * $uniqueItems * $amount) / $totalItems * $countryRate;
-
 
         $method->setPrice($shippingPrice);
         $method->setCost($amount);
