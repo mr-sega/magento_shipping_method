@@ -1,0 +1,18 @@
+<div data-bind="scope: 'coins-transaction-grid'">
+    <div data-bind="text: totalCoinsMsg"></div>
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "coins-transaction-grid": {
+                        "component": "Sega_ChristmasCoins/js/customer/coins-transaction-grid"
+                    }
+                }
+            }
+        }
+    }
+</script>

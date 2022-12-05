@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="SEGA" translate="label" sortOrder="300">
+            <label>SEGA</label>
+        </tab>
+        <section id="loyalty" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Loyalty Program</label>
+            <tab>SEGA</tab>
+            <resource>Magento_Backend::system</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>General Configuration</label>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable Module</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="coins_back_percent" translate="label" type="text" sortOrder="20" showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                    <label>Percent of purchase</label>
+                    <validate>validate-number validate-greater-than-zero</validate>
+                </field>
+                <field id="enable_pdp_message" translate="label" type="select" sortOrder="30" showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                    <label>Customer message coins total </label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+        <section id="payment">
+            <group id="coins" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Coins Payment Method</label>
+                <field id="active" translate="label" sortOrder="10" type="select" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Reward Points</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
